@@ -1,29 +1,33 @@
-// requere o módulo express
 const express = require('express');
-// requere o módulo cors
 const cors = require('cors');
-// requere a conexão com o banco de dados
 const conn = require('./db/conn'); 
-// instancia o express
+
+// IMPORTAÇÃO DOS MODELS sincronizar com banco
+require('./models/Users');
+require('./models/Product');
+require('./models/Variant');
+require('./models/Order');
+require('./models/OrderItem');
+
+//   IMPORTAÇÃO DAS ROTAS
+const userRoutes = require('./routes/userRoutes');
+
 const api = express();
 
-// --- Configurações (Middlewares) ---
-// Permite receber informações em formato JSON
+//  MIDDLEWARES 
 api.use(express.json());
-
-// Permite que o site front-end se comunique com a API
 api.use(cors());
 
-// --- Rotas ---
-// Rota de teste para ver se o servidor está no ar
+// ROTAS 
+api.use('/users', userRoutes);
+
 api.get('/', (req, res) => {
     res.json({ message: 'API da Loja de Moda Fitness está no ar!' });
 });
 
-// --- Inicialização ---
-const PORT = 3000;
+//    INICIALIZAÇÃO 
+const PORT = process.env.PORT || 3000;
 
-// O 'sync' sincroniza os modelos com o banco de dados antes de ligar o servidor
 conn.sync()
     .then(() => {
         api.listen(PORT, () => {

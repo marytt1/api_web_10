@@ -1,4 +1,3 @@
-//
 const express = require('express');
 // Importando o model do usuário
 const router = express.Router();
