@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const conn = require('./db/conn'); 
+const conn = require('./db/conn');
 
 // IMPORTAÇÃO DOS MODELS sincronizar com banco
 require('./models/Users');
@@ -11,6 +11,7 @@ require('./models/OrderItem');
 
 //   IMPORTAÇÃO DAS ROTAS
 const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
 
 const api = express();
 
@@ -20,9 +21,10 @@ api.use(cors());
 
 // ROTAS 
 api.use('/users', userRoutes);
+api.use('/products', productRoutes);
 
 api.get('/', (req, res) => {
-    res.json({ message: 'API da Loja de Moda Fitness está no ar!' });
+    res.json({ message: 'API da Loja está no ar!' });
 });
 
 //    INICIALIZAÇÃO 
