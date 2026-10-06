@@ -21,6 +21,18 @@ const User = db.define('User', {
         required: true,
         allowNull: false,
     },
+    busto: { 
+        type: DataTypes.FLOAT, 
+        allowNull: true 
+    },
+    cintura: { 
+        type: DataTypes.FLOAT, 
+        allowNull: true 
+    },
+    quadril: { 
+        type: DataTypes.FLOAT, 
+        allowNull: true 
+    },
 });
 
 module.exports = User;

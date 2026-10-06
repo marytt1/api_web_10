@@ -1,4 +1,9 @@
-name,description,price,category,stock
-Legging Alta Compressão,Legging preta ideal para treino pesado,89.90,Leggings,5
-Top Nadador Fit,Top com alta sustentação rosa,45.50,Tops,3
-Bermuda Ciclista,Bermuda térmica azul marinho,55.00,Bermuda,4
+name,description,price,category,stock,image_url
+Cropped Helena,Cropped Helena,32.00,Croppeds,1,
+Cropped Mariana,Cropped Mariana,30.00,Croppeds,2,
+Cropped Vivi,Cropped Vivi,28.00,Croppeds,3,
+Blusa Paloma,Blusa Paloma,35.00,Blusas,4,
+Top Lara,Top Lara,35.00,Tops,3,
+Top Beatriz,Top Beatriz,35.00,Tops,6,
+Legging Flare Fernanda,Legging Flare Fernanda,70.00,Leggings,6,
+Shorts Maíra,Shorts Maíra,40.00,Shorts,2,

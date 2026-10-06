@@ -8,10 +8,12 @@ require('./models/Product');
 require('./models/Variant');
 require('./models/Order');
 require('./models/OrderItem');
+require('./models/Favorite');
 
 //   IMPORTAÇÃO DAS ROTAS
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
+const favoriteRoutes = require('./routes/favoriteRoutes');
 
 const api = express();
 
@@ -19,9 +21,11 @@ const api = express();
 api.use(express.json());
 api.use(cors());
 
+
 // ROTAS 
 api.use('/users', userRoutes);
 api.use('/products', productRoutes);
+api.use('/favorites', favoriteRoutes);
 
 api.get('/', (req, res) => {
     res.json({ message: 'API da Loja está no ar!' });

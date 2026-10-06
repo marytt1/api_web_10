@@ -12,4 +12,7 @@ router.post('/register', userValidate, UserController.register);
 // Rota GET para listar (buscar dados)
 router.get('/', UserController.listAll);
 
+// Rota POST para a Calculadora de Medidas
+router.post('/size-guide', UserController.calculateSize);
+
 module.exports = router;

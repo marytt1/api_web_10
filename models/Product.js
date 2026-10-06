@@ -23,6 +23,10 @@ const Product = db.define('Product', {
         allowNull: false,
         defaultValue: 0,
     },
+    image_url: {
+        type: DataTypes.STRING,
+        allowNull: true, // true para permitir produtos sem foto no início
+    },
 });
 
 module.exports = Product;
