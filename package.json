@@ -17,7 +17,9 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-validator": "^7.3.2",
+    "jsonwebtoken": "^9.0.3",
     "mysql2": "^3.24.3",
+    "nodemailer": "^10.2.1",
     "sequelize": "^6.37.8"
   },
   "devDependencies": {

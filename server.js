@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const conn = require('./db/conn');
+require('dotenv').config();
 
 // IMPORTAÇÃO DOS MODELS sincronizar com banco
 require('./models/Users');

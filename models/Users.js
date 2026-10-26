@@ -21,6 +21,11 @@ const User = db.define('User', {
         required: true,
         allowNull: false,
     },
+    isAdmin: { 
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
     busto: { 
         type: DataTypes.FLOAT, 
         allowNull: true 
@@ -32,6 +37,14 @@ const User = db.define('User', {
     quadril: { 
         type: DataTypes.FLOAT, 
         allowNull: true 
+    },
+    resetPasswordToken: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    },
+    resetPasswordExpires: {
+    type: DataTypes.DATE,
+    allowNull: true,
     },
 });
 

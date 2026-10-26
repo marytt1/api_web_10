@@ -3,16 +3,23 @@ const express = require('express');
 const router = express.Router();
 // Importando o controller do usuário
 const UserController = require('../controllers/userController');
-// Importando a função de validação do usuário
-const { userValidate } = require('../helpers/userValidator');
 
 // Rota POST para cadastrar (enviar dados)
-router.post('/register', userValidate, UserController.register);
+router.post('/register',  UserController.register);
+
+// Rota POST para realizar o LOGIN
+router.post('/login', UserController.login);
 
 // Rota GET para listar (buscar dados)
 router.get('/', UserController.listAll);
 
 // Rota POST para a Calculadora de Medidas
 router.post('/size-guide', UserController.calculateSize);
+
+// Rota POST para solicitar redefinição de senha
+router.post('/forgot-password', UserController.forgotPassword);
+
+// Rota POST para redefinir a senha usando o token
+router.post('/reset-password/:token', UserController.resetPassword);
 
 module.exports = router;
