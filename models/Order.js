@@ -8,8 +8,12 @@ const Order = db.define('Order', {
         allowNull: false,
     },
     status: {
-        type: DataTypes.STRING, // Status do pedido 
-        defaultValue: 'Pendente',
+    type: DataTypes.ENUM('Aguardando', 'Confirmado', 'Enviado', 'Entregue', 'Cancelado'),
+    defaultValue: 'Aguardando',
+    },
+    paidAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
     },
 });
 

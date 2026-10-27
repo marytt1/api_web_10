@@ -17,6 +17,6 @@ router.put('/:id', verifyAdmin, ProductController.updateProduct);
 router.delete('/:id', verifyAdmin, ProductController.deleteProduct);
 
 // Rota de Importação
-router.post('/import', ProductController.importCSV);
+router.post('/import', verifyAdmin, ProductController.importCSV);
 
 module.exports = router;
