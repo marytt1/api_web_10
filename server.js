@@ -2,6 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const conn = require('./db/conn');
 require('dotenv').config();
+const api = express();
+
+//  MIDDLEWARES 
+api.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+api.use(express.json());
 
 // IMPORTAÇÃO DOS MODELS sincronizar com banco
 require('./models/Users');
@@ -18,12 +26,7 @@ const favoriteRoutes = require('./routes/favoriteRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const variantRoutes = require('./routes/variantRoutes');
 const orderRoutes = require('./routes/orderRoutes');
-
-const api = express();
-
-//  MIDDLEWARES 
-api.use(express.json());
-api.use(cors());
+const cartRoutes = require('./routes/cartRoutes');
 
 
 // ROTAS 
@@ -33,6 +36,7 @@ api.use('/favorites', favoriteRoutes);
 api.use('/admin', adminRoutes);
 api.use('/variants', variantRoutes);
 api.use('/orders', orderRoutes);
+api.use('/cart', cartRoutes);
 
 api.get('/', (req, res) => {
     res.json({ message: 'API da Loja está no ar!' });

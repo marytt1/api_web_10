@@ -158,32 +158,53 @@ module.exports = class UserController {
             return res.status(422).json({ message: 'O e-mail é obrigatório!' });
         }
  
+        // Mesma resposta sempre, exista o e-mail ou não
         const genericResponse = {
             message: 'Se o e-mail estiver cadastrado, você receberá as instruções para redefinir a senha.'
         };
  
         try {
+            if (!process.env.FRONTEND_URL) {
+                console.error('forgotPassword: FRONTEND_URL não está definido no .env');
+                return res.status(500).json({ message: 'Erro ao processar a solicitação.' });
+            }
+ 
             const user = await User.findOne({ where: { email: email.trim() } });
  
             if (user) {
-                // Token enviado por e-mail
                 const token = crypto.randomBytes(32).toString('hex');
  
+                // No banco vai apenas o HASH do token, com validade de 30 minutos
                 await user.update({
                     resetPasswordToken: hashToken(token),
                     resetPasswordExpires: new Date(Date.now() + 30 * 60 * 1000)
                 });
  
-                const link = `${process.env.FRONTEND_URL}/redefinir-senha/${token}`;
+                const link = `${process.env.FRONTEND_URL}/redefinir-senha?token=${token}`;
  
+                // Sem await: o tempo de resposta não revela se o e-mail existe
                 transporter.sendMail({
                     to: user.email,
                     from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
                     subject: 'Recuperação de Senha - La Rose',
                     text: `Você solicitou a redefinição de senha.\n\n` +
-                          `Clique no link a seguir para criar uma nova senha (válido por 30 minutos):\n\n` +
-                          `${link}\n\n` +
-                          `Se não solicitou isto, ignore este e-mail.`
+                          `Para criar uma nova senha (link válido por 30 minutos), acesse:\n${link}\n\n` +
+                          `Se não solicitou isto, ignore este e-mail.`,
+                    // um botão que leva direto para a página de redefinição
+                    html: `
+                        <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; color: #3a3a3a;">
+                            <h2 style="color: #8b1538; margin-bottom: 4px;">La Rose</h2>
+                            <p>Você solicitou a redefinição de senha.</p>
+                            <p>
+                                <a href="${link}"
+                                   style="display: inline-block; background: #8b1538; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 24px; font-weight: bold;">
+                                    Criar nova senha
+                                </a>
+                            </p>
+                            <p style="font-size: 12px; color: #777777;">
+                                O link vale por 30 minutos. Se você não fez essa solicitação, ignore este e-mail.
+                            </p>
+                        </div>`
                 }).catch((err) => console.error('Erro ao enviar e-mail de recuperação:', err.message));
             }
  
@@ -205,7 +226,7 @@ module.exports = class UserController {
         }
  
         try {
-            // Busca pelo hash do token
+            // Busca pelo hash do token, já exigindo que não tenha expirado
             const user = await User.findOne({
                 where: {
                     resetPasswordToken: hashToken(token),
@@ -234,4 +255,4 @@ module.exports = class UserController {
             return res.status(500).json({ message: 'Erro ao redefinir a senha.' });
         }
     }
-};
+}

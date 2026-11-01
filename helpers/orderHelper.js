@@ -3,7 +3,7 @@ const OrderItem = require('../models/OrderItem');
 const Variant = require('../models/Variant');
 const Product = require('../models/Product');
 
-// Campos do cliente que vão para o painel admin.
+// Campos do cliente que vão para o painel admin
 const USER_ATTRIBUTES = ['id', 'name', 'email'];
 
 // Pedido + cliente + itens (com variação e produto)
@@ -14,7 +14,7 @@ const ORDER_INCLUDE = [
         include: [
             {
                 model: Variant,
-                include: [{ model: Product, attributes: ['id', 'name'] }]
+                include: [{ model: Product, attributes: ['id', 'name', 'image_url'] }]
             }
         ]
     }
@@ -22,6 +22,7 @@ const ORDER_INCLUDE = [
 
 const orderCode = (id) => `ORD-${String(id).padStart(3, '0')}`;
 
+// Evita resultados como 339.79999999 ao somar FLOAT
 const money = (value) => Math.round((Number(value) || 0) * 100) / 100;
 
 function formatOrder(order) {
@@ -34,11 +35,13 @@ function formatOrder(order) {
             ? {
                   id: customer.id,
                   name: customer.name,
-                  email: customer.email,
+                  email: customer.email
               }
             : null,
         items: (order.OrderItems || []).map((item) => ({
+            productId: item.Variant && item.Variant.Product ? item.Variant.Product.id : null,
             name: item.Variant && item.Variant.Product ? item.Variant.Product.name : 'Produto removido',
+            imageUrl: item.Variant && item.Variant.Product ? item.Variant.Product.image_url : null,
             sku: item.Variant ? item.Variant.sku : null,
             color: item.Variant ? item.Variant.color : null,
             size: item.Variant ? item.Variant.size : null,

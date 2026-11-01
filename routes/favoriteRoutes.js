@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const FavoriteController = require('../controllers/favoriteController');
+const verifyToken = require('../helpers/verifyToken');
 
-router.post('/', FavoriteController.addFavorite);
-router.get('/:userId', FavoriteController.getUserFavorites);
+// Tudo exige login: o usuário é identificado pelo token
+router.post('/', verifyToken, FavoriteController.toggleFavorite);
+router.get('/', verifyToken, FavoriteController.getMyFavorites);
 
 module.exports = router;

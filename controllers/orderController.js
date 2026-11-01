@@ -17,7 +17,6 @@ class BusinessError extends Error {
 
 module.exports = class OrderController {
 
-    // GET /admin/orders?search=&status=
     static async list(req, res) {
         const { search, status } = req.query;
 
@@ -52,7 +51,6 @@ module.exports = class OrderController {
         }
     }
 
-    // PATCH /admin/orders/:id/confirm-payment
     static async confirmPayment(req, res) {
         const { id } = req.params;
 
@@ -103,7 +101,6 @@ module.exports = class OrderController {
         }
     }
 
-    // PATCH /admin/orders/:id/status
     static async updateStatus(req, res) {
         const { id } = req.params;
         const { status } = req.body;
