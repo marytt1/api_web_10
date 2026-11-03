@@ -14,6 +14,10 @@ const Product = db.define('Product', {
         type: DataTypes.FLOAT, // Preço do produto
         allowNull: false,
     },
+    oldPrice: {
+        type: DataTypes.FLOAT, // Preço antigo (promoção)
+        allowNull: true,
+    },
     category: {
         type: DataTypes.STRING, // Categoria do produto, ex: Camisetas, Calças, Acessórios
         allowNull: false,
