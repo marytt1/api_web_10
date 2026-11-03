@@ -33,7 +33,6 @@ const variantRoutes = require('./routes/variantRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 
-
 // ROTAS 
 api.use('/users', userRoutes);
 api.use('/products', productRoutes);

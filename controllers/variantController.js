@@ -1,3 +1,4 @@
+const db = require('../db/conn');
 const Variant = require('../models/Variant');
 const Product = require('../models/Product');
 
@@ -26,6 +27,10 @@ module.exports = class VariantController {
             const variant = await Variant.create({ sku, size, color, stock, ProductId });
             res.status(201).json({ message: 'Variação cadastrada com sucesso!', variant });
         } catch (error) {
+            // SKU é único: o banco recusa repetido
+            if (error.name === 'SequelizeUniqueConstraintError') {
+                return res.status(409).json({ message: 'Já existe uma variação com esse SKU.' });
+            }
             res.status(500).json({ message: 'Erro ao criar variação', error: error.message });
         }
     }
@@ -80,7 +85,9 @@ module.exports = class VariantController {
         }
     }
 
-    // Apagar uma variação
+    // Apagar uma variação.
+    // Se ela era a ÚLTIMA do produto, o produto também é apagado (tudo na mesma transação:
+    // ou apaga os dois, ou não apaga nenhum).
     static async deleteVariant(req, res) {
         const { id } = req.params;
         try {
@@ -89,8 +96,25 @@ module.exports = class VariantController {
                 return res.status(404).json({ message: 'Variação não encontrada!' });
             }
 
-            await Variant.destroy({ where: { id: id } });
-            res.status(200).json({ message: 'Variação apagada com sucesso!' });
+            const productId = variant.ProductId;
+            let productDeleted = false;
+
+            await db.transaction(async (t) => {
+                await variant.destroy({ transaction: t });
+
+                const remaining = await Variant.count({ where: { ProductId: productId }, transaction: t });
+                if (remaining === 0) {
+                    await Product.destroy({ where: { id: productId }, transaction: t });
+                    productDeleted = true;
+                }
+            });
+
+            res.status(200).json({
+                message: productDeleted
+                    ? 'Variação apagada. Era a última do produto, então o produto também foi removido.'
+                    : 'Variação apagada com sucesso!',
+                productDeleted
+            });
         } catch (error) {
             res.status(500).json({ message: 'Erro ao deletar variação', error: error.message });
         }

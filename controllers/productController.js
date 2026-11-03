@@ -17,9 +17,83 @@ async function syncCover(product) {
   await product.update({ image_url: first ? first.url : null });
 }
 
-// Fotos sempre vêm na ordem da galeria
-const PRODUCT_INCLUDE = [{ model: Variant }, { model: ProductImage }];
-const PRODUCT_ORDER = [['createdAt', 'DESC'], [ProductImage, 'position', 'ASC']];
+// A loja precisa das variações (cor, tamanho e estoque) e das fotos da galeria
+const PRODUCT_INCLUDE = [
+  { model: Variant, attributes: ['id', 'sku', 'size', 'color', 'stock'] },
+  { model: ProductImage, attributes: ['id', 'url', 'color', 'position'] },
+];
+// Produtos mais novos primeiro; variações e fotos sempre em ordem fixa
+const PRODUCT_ORDER = [['createdAt', 'DESC'], [Variant, 'id', 'ASC'], [ProductImage, 'position', 'ASC']];
+
+// image_url guarda o CAMINHO da imagem na API
+const IMAGE_PATTERN = /^(\/(images|uploads)\/|https?:\/\/)/;
+
+// Valida os campos recebidos e devolve { data } com os valores já tratados, ou { error } com a mensagem.
+function parseProductBody(body, partial) {
+    const data = {};
+    const has = (field) => body[field] !== undefined;
+
+    if (!partial || has('name')) {
+        if (typeof body.name !== 'string' || body.name.trim().length < 2 || body.name.trim().length > 150) {
+            return { error: 'O nome do produto deve ter entre 2 e 150 caracteres!' };
+        }
+        data.name = body.name.trim();
+    }
+
+    if (!partial || has('price')) {
+        const price = Number(body.price);
+        if (body.price === undefined || body.price === null || body.price === '' || !Number.isFinite(price) || price <= 0) {
+            return { error: 'O preço do produto deve ser um número maior que zero!' };
+        }
+        data.price = Math.round(price * 100) / 100;
+    }
+
+    // Preço antigo (promoção): null remove a promoção
+    if (has('oldPrice')) {
+        if (body.oldPrice === null || body.oldPrice === '') {
+            data.oldPrice = null;
+        } else {
+            const oldPrice = Number(body.oldPrice);
+            if (!Number.isFinite(oldPrice) || oldPrice <= 0) {
+                return { error: 'O preço antigo deve ser um número maior que zero (ou vazio, para remover a promoção).' };
+            }
+            data.oldPrice = Math.round(oldPrice * 100) / 100;
+        }
+    }
+
+    // A categoria é tratada por normalizeCategory (junta "cropped" e "Cropped"): aqui só confere se veio
+    if (!partial || has('category')) {
+        if (typeof body.category !== 'string' || !body.category.trim()) {
+            return { error: 'Os campos nome, preço e categoria são obrigatórios!' };
+        }
+        data.category = body.category;
+    }
+
+    if (has('description')) {
+        if (body.description !== null && (typeof body.description !== 'string' || body.description.length > 1000)) {
+            return { error: 'A descrição deve ter no máximo 1000 caracteres!' };
+        }
+        data.description = body.description === null ? null : body.description.trim();
+    }
+
+    if (has('stock')) {
+        const stock = Number(body.stock);
+        if (!Number.isInteger(stock) || stock < 0) {
+            return { error: 'O estoque não pode ser negativo e deve ser um número inteiro!' };
+        }
+        data.stock = stock;
+    }
+
+    if (has('image_url')) {
+        const url = body.image_url;
+        if (url !== null && url !== '' && (typeof url !== 'string' || url.length > 255 || !IMAGE_PATTERN.test(url))) {
+            return { error: 'A imagem deve ser um caminho da API (/images/... ou /uploads/...) ou um endereço http(s).' };
+        }
+        data.image_url = url ? url : null;
+    }
+
+    return { data };
+}
 
 // Função auxiliar para limpar espaços e ignorar maiúsculas/minúsculas de uma categoria existente
 async function normalizeCategory(raw) {
@@ -38,47 +112,40 @@ module.exports = class ProductController {
     //CREATE (Criar 1 produto) - Método POST
     static async createProduct(req, res) {
         // req.body pega os dados no Insomnia
-        const { name, description, price, oldPrice, category, stock, image_url } = req.body;
-
-        // Campos obrigatórios e regra de preço
-        if (!name || !price || !category) {
-            return res.status(422).json({ message: 'Os campos nome, preço e categoria são obrigatórios!' });
-        }
-        if (price <= 0) {
-            return res.status(422).json({ message: 'O preço do produto deve ser maior que zero!' });
+        const { data, error } = parseProductBody(req.body || {}, false);
+        if (error) {
+            return res.status(422).json({ message: error });
         }
 
-        if (oldPrice !== undefined && oldPrice !== null && oldPrice <= price) {
+        if (data.oldPrice !== undefined && data.oldPrice !== null && data.oldPrice <= data.price) {
             return res.status(422).json({ message: 'O preço antigo deve ser maior que o preço atual.' });
         }
 
         try {
-            const finalCategory = await normalizeCategory(category);
+            const finalCategory = await normalizeCategory(data.category);
             if (!finalCategory) {
                 return res.status(422).json({ message: 'Informe uma categoria (até 40 caracteres).' });
             }
 
-            const product = await Product.create({
-                name, description, price, oldPrice: oldPrice ?? null,
-                category: finalCategory, stock, image_url,
-            });
+            const product = await Product.create({ ...data, category: finalCategory, oldPrice: data.oldPrice ?? null });
             res.status(201).json({ message: 'Produto criado com sucesso!', product });
-        } catch (error) {
-            res.status(500).json({ message: 'Erro ao criar produto', error: error.message });
+        } catch (err) {
+            console.error('createProduct:', err.message);
+            res.status(500).json({ message: 'Erro ao criar produto' });
         }
     }
 
-    //READ ALL (Listar TODOS os produtos) - Método GET
+    //READ ALL (Listar TODOS os produtos, com variações e fotos) - Método GET
     static async getAllProducts(req, res) {
-        // Busca todos no banco
         try {
             const products = await Product.findAll({
                 include: PRODUCT_INCLUDE,
                 order: PRODUCT_ORDER,
             });
             res.status(200).json({ products });
-        } catch (error) {
-            res.status(500).json({ message: 'Erro ao buscar produtos', error: error.message });
+        } catch (err) {
+            console.error('getAllProducts:', err.message);
+            res.status(500).json({ message: 'Erro ao buscar produtos' });
         }
     }
 
@@ -90,59 +157,64 @@ module.exports = class ProductController {
         try {
             const product = await Product.findByPk(id, {
                 include: PRODUCT_INCLUDE,
-                order: [[ProductImage, 'position', 'ASC']],
+                order: [[Variant, 'id', 'ASC'], [ProductImage, 'position', 'ASC']],
             });
             if (!product) {
                 return res.status(404).json({ message: 'Produto não encontrado!' });
             }
             res.status(200).json({ product });
-        } catch (error) {
-            res.status(500).json({ message: 'Erro ao buscar produto', error: error.message });
+        } catch (err) {
+            console.error('getProductById:', err.message);
+            res.status(500).json({ message: 'Erro ao buscar produto' });
         }
     }
 
-    //UPDATE (Atualizar um produto pelo ID) - Método PUT
+    //UPDATE (Atualizar um produto pelo ID) - Método PUT. Só muda os campos enviados
     static async updateProduct(req, res) {
         const { id } = req.params;
-        const { name, description, price, oldPrice, category, stock, image_url } = req.body;
 
-        // Validação de estoque negativo e preço maior que zero
-        if (price !== undefined && price <= 0) {
-            return res.status(422).json({ message: 'O preço atualizado deve ser maior que zero!' });
+        const { data, error } = parseProductBody(req.body || {}, true);
+        if (error) {
+            return res.status(422).json({ message: error });
         }
-        
-        if (stock !== undefined && stock < 0) {
-            return res.status(422).json({ message: 'O estoque não pode ser negativo!' });
+        if (Object.keys(data).length === 0) {
+            return res.status(422).json({ message: 'Envie ao menos um campo para atualizar.' });
         }
 
         try {
-            const finalCategory = category !== undefined ? await normalizeCategory(category) : undefined;
-            if (category !== undefined && !finalCategory) {
-                return res.status(422).json({ message: 'Informe uma categoria (até 40 caracteres).' });
-            }
             // Verifica se o produto existe antes de tentar atualizar
             const product = await Product.findByPk(id);
             if (!product) {
                 return res.status(404).json({ message: 'Produto não encontrado!' });
             }
 
-            const finalPrice = price !== undefined ? price : product.price;
-            if (oldPrice !== undefined && oldPrice !== null && oldPrice <= finalPrice) {
+            if (data.category !== undefined) {
+                const finalCategory = await normalizeCategory(data.category);
+                if (!finalCategory) {
+                    return res.status(422).json({ message: 'Informe uma categoria (até 40 caracteres).' });
+                }
+                data.category = finalCategory;
+            }
+
+            const finalPrice = data.price !== undefined ? data.price : product.price;
+
+            if (data.oldPrice !== undefined && data.oldPrice !== null && data.oldPrice <= finalPrice) {
                 return res.status(422).json({ message: 'O preço antigo deve ser maior que o preço atual.' });
             }
 
-            // Só atualiza o que veio na requisição
-            const fields = Object.fromEntries(
-                Object.entries({ name, description, price, oldPrice, category: finalCategory, stock, image_url })
-                    .filter(([, value]) => value !== undefined)
-            );
-            await product.update(fields);
+            // Se o preço subiu até o valor "antigo" (ou além), a promoção acabou: remove o preço antigo
+            if (data.price !== undefined && data.oldPrice === undefined && product.oldPrice !== null && product.oldPrice <= finalPrice) {
+                data.oldPrice = null;
+            }
+
+            await product.update(data);
 
             res.status(200).json({ message: 'Produto atualizado com sucesso!' });
-        } catch (error) {
-      res.status(500).json({ message: 'Erro ao atualizar produto', error: error.message });
+        } catch (err) {
+            console.error('updateProduct:', err.message);
+            res.status(500).json({ message: 'Erro ao atualizar produto' });
+        }
     }
-  }
 
     //DELETE (Apagar um produto pelo ID) - Método DELETE
     static async deleteProduct(req, res) {
@@ -164,8 +236,9 @@ module.exports = class ProductController {
             removeLocalImage(product.image_url);
 
             res.status(200).json({ message: 'Produto deletado com sucesso!' });
-        } catch (error) {
-            res.status(500).json({ message: 'Erro ao deletar produto', error: error.message });
+        } catch (err) {
+            console.error('deleteProduct:', err.message);
+            res.status(500).json({ message: 'Erro ao deletar produto' });
         }
     }
 
@@ -194,12 +267,13 @@ module.exports = class ProductController {
                 });
             }
             res.status(200).json({ message: 'Produtos importados do CSV com sucesso!' });
-        } catch (error) {
-            res.status(500).json({ message: 'Erro ao importar CSV', error: error.message });
+        } catch (err) {
+            console.error('importCSV:', err.message);
+            res.status(500).json({ message: 'Erro ao importar CSV' });
         }
     }
 
-    // POST /products/:id/images  (multipart: campo "images" com 1 a 10 arquivos, campo opcional "color")
+    // POST /products/:id/images 
     static async uploadImages(req, res) {
         const { id } = req.params;
         const files = req.files || [];
@@ -222,7 +296,7 @@ module.exports = class ProductController {
             if (count + files.length > MAX_IMAGES_PER_PRODUCT) {
                 urls.forEach(removeLocalImage);
                 return res.status(422).json({
-                message: `Cada produto aceita no máximo ${MAX_IMAGES_PER_PRODUCT} fotos (já tem ${count}).`,
+                    message: `Cada produto aceita no máximo ${MAX_IMAGES_PER_PRODUCT} fotos (já tem ${count}).`,
                 });
             }
 
@@ -242,9 +316,9 @@ module.exports = class ProductController {
                 message: 'Fotos enviadas!',
                 images: created.map((i) => ({ id: i.id, url: i.url, color: i.color, position: i.position })),
             });
-        } catch (error) {
+        } catch (err) {
             urls.forEach(removeLocalImage);
-            console.error('uploadImages:', error.message);
+            console.error('uploadImages:', err.message);
             res.status(500).json({ message: 'Erro ao salvar as fotos.' });
         }
     }
@@ -266,8 +340,8 @@ module.exports = class ProductController {
             if (product) await syncCover(product);
 
             res.status(200).json({ message: 'Foto removida.' });
-        } catch (error) {
-            console.error('deleteImage:', error.message);
+        } catch (err) {
+            console.error('deleteImage:', err.message);
             res.status(500).json({ message: 'Erro ao remover a foto.' });
         }
     }

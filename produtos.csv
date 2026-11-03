@@ -1,9 +1,188 @@
 name,description,price,category,stock,image_url
-Cropped Helena,Cropped Helena,32.00,Croppeds,1,
-Cropped Mariana,Cropped Mariana,30.00,Croppeds,2,
-Cropped Vivi,Cropped Vivi,28.00,Croppeds,3,
-Blusa Paloma,Blusa Paloma,35.00,Blusas,4,
-Top Lara,Top Lara,35.00,Tops,3,
-Top Beatriz,Top Beatriz,35.00,Tops,6,
-Legging Flare Fernanda,Legging Flare Fernanda,70.00,Leggings,6,
+Cropped Thais - Grape,Cropped Thais da Coleção Grape. Cores: Preto / Roxo / Verde.,30.00,Croppeds,14,/uploads/cropped-thais-grape-preto-01.jpg
+Cropped Vanessa,Cropped Vanessa da Coleção Grape. Cores: Preto / Roxo / Verde.,30.00,Croppeds,5,/uploads/cropped-vanessa-grape-preto-01.jpg
+Faixa de Cabelo,Faixa de Cabelo da Coleção Grape.,15.00,Acessórios,4,/uploads/faixa-de-cabelo-grape-01.jpg
+Legging Flare Basic - Grape,Legging Flare Basic da Coleção Grape. Cores: Preto / Roxo / Verde.,70.00,Leggings,15,/uploads/legging-flare-basic-grape-preto-01.jpg
+Macaquinho Jenifer - Grape,Macaquinho Jenifer da Coleção Grape. Cores: Preto / Roxo / Verde.,65.00,Macaquinhos,8,/uploads/macaquinho-jenifer-grape-preto-01.jpg
+Shorts Basic - Grape,Shorts Basic da Coleção Grape. Cores: Preto / Roxo / Verde.,40.00,Shorts,7,/uploads/shorts-basic-grape-preto-01.jpg
+Cropped Carla - Aesthetic,Cropped Carla da Coleção Aesthetic. Cores: Cinza Escuro / Preto / Vermelho Escarlate.,30.00,Croppeds,7,/uploads/cropped-carla-aesthetic-cinza-escuro-01.jpg
+Legging Clara - Aesthetic,Legging Clara da Coleção Aesthetic. Cores: Cinza Escuro / Preto / Vermelho Escarlate.,70.00,Leggings,6,/uploads/legging-clara-aesthetic-cinza-escuro-01.jpg
+Macacão Sabrina - Aesthetic,Macacão Sabrina da Coleção Aesthetic. Cores: Cinza Escuro / Preto / Vermelho Escarlate.,85.00,Macacões,15,/uploads/macacao-sabrina-aesthetic-cinza-escuro-01.jpg
+Macaquinho Marcela - Aesthetic,Macaquinho Marcela da Coleção Aesthetic. Cores: Café / Preto.,65.00,Macaquinhos,5,/uploads/macaquinho-marcela-aesthetic-cafe-01.jpg
+Shorts Bruna - Aesthetic,Shorts Bruna da Coleção Aesthetic. Cores: Cinza Escuro / Preto / Vermelho Escarlate.,40.00,Shorts,14,/uploads/shorts-bruna-aesthetic-cinza-escuro-01.jpg
+Legging Patricia - Aura,Legging Patricia da Coleção Aura. Cores: Bordô com Branco / Petroleo com Branco / Preto com Branco.,70.00,Leggings,15,/uploads/legging-patricia-aura-bordo-com-branco-01.jpg
+Macaquinho Liz,Macaquinho Liz da Coleção Aura. Cores: Bordô com Branco / Petróleo com Branco / Preto com Branco.,65.00,Macaquinhos,12,/uploads/macaquinho-liz-aura-bordo-com-branco-01.jpg
+Shorts Vanessa - Aura,Shorts Vanessa da Coleção Aura. Cores: Bordô com Branco / Petroleo com Branco / Preto com Branco.,40.00,Shorts,5,/uploads/shorts-vanessa-aura-bordo-com-branco-01.jpg
+Top Catarina,Top Catarina da Coleção Aura. Cores: Bordo com Branco / Petroleo com Branco / Preto com Branco.,35.00,Tops,13,/uploads/top-catarina-aura-bordo-com-branco-01.jpg
+Top Lara,Top Lara da Coleção Aura. Cores: Bordô com Branco / Petroleo com Branco / Preto com Branco.,35.00,Tops,10,/uploads/top-lara-aura-bordo-com-branco-01.jpg
+Cropped Adriana,Cropped Adriana da Coleção Azure. Cores: Azul Celeste / Branco / Preto.,30.00,Croppeds,4,/uploads/cropped-adriana-azure-azul-celeste-01.jpg
+Legging Flare Basic - Azure,Legging Flare Basic - Azure da Coleção Azure. Cores: Azul Celeste / Preto.,70.00,Leggings,4,/uploads/legging-flare-basic-azure-azul-celeste-01.jpg
+Macacão Priscila - Azure,Macacão Priscila - Azure da Coleção Azure. Cores: Azul Celeste / Preto.,85.00,Macacões,5,/uploads/macacao-priscila-azure-azul-celeste-01.jpg
+Shorts Daniela,Shorts Daniela da Coleção Azure. Cores: Azul Celeste / Preto.,40.00,Shorts,7,/uploads/shorts-daniela-azure-azul-celeste-01.jpg
+Top Barbara,Top Barbara da Coleção Azure. Cores: Azul Celeste / Branco / Preto.,35.00,Tops,7,/uploads/top-barbara-azure-azul-celeste-01.jpg
+Blusa Cris,Blusa Cris da Coleção Basic. Cores: Azul / Azul Capri / Azul Marinho / Bordô / Branco / Cappuccino / Chocolate / Chocolate Escuro / Cinza / Cinza Escuro / Creme / Espresso / Laranja Cusco / Mocha Mousse / Nude / Preto / Rosa Barbie / Rosa Bebe / Rosa Claro / Rosa Neon / Verde Bandeira / Verde Militar / Vermelho Escarlate.,35.00,Blusas,12,/uploads/blusa-cris-basic-azul-01.jpg
+Conjunto Iris,Conjunto Iris da Coleção Basic. Cores: Off White com Preto.,90.00,Conjuntos,13,/uploads/conjunto-iris-basic-off-white-com-preto-01.jpg
+Conjunto Iris Moletinho,Conjunto Iris Moletinho da Coleção Basic. Cores: Cinza / Preto.,90.00,Conjuntos,4,/uploads/conjunto-iris-moletinho-basic-cinza-01.jpg
+Cropped Amanda,Cropped Amanda da Coleção Basic. Cores: Cinza / Preto.,30.00,Croppeds,12,/uploads/cropped-amanda-basic-cinza-01.jpg
+Cropped Thais - Basic,Cropped Thais da Coleção Basic. Cores: Azul Marinho / Bordo / Chocolate / Cinza / Cinza Escuro / Expresso / Laranja / Marinho / Preto / Rosa Barbie / Verde Militar / Vermelho Escarlate.,30.00,Croppeds,7,/uploads/cropped-thais-basic-azul-marinho-01.jpg
+Faixa,Faixa da Coleção Basic. Cores: Chocolate / Cinza / Preta.,15.00,Acessórios,15,/uploads/faixa-basic-chocolate-01.jpg
+Legging Basic - Basic,Legging Basic da Coleção Basic. Cores: Bordô / Branco / Chocolate / Cinza / Pink / Preto / Rosa Iorgurte / Verde Militar.,70.00,Leggings,14,/uploads/legging-basic-bordo-01.jpg
+Legging Flare Basic - Basic,Legging Flare Basic da Coleção Basic. Cores: Bordô / Cinza / Pink / Preto / Rosa Iogurte / Verde Militar.,70.00,Leggings,15,/uploads/legging-flare-basic-bordo-01.jpg
+Macacão Antonela,Macacão Antonela da Coleção Basic. Cores: Preto.,85.00,Macacões,12,/uploads/macacao-antonela-basic-preto-01.jpg
+Macacão Priscila - Basic,Macacão Priscila da Coleção Basic. Cores: Chocolate / Cinza / Marinho / Preto.,85.00,Macacões,10,/uploads/macacao-priscila-basic-chocolate-01.jpg
+Macaquinho Caroline,Macaquinho Caroline da Coleção Basic. Cores: Branco / Chocolate / Cinza / Marinho / Preto.,65.00,Macaquinhos,7,/uploads/macaquinho-caroline-basic-branco-01.jpg
+Macaquinho Gisele,Macaquinho Gisele da Coleção Basic. Cores: Branco / Chocolate / Cinza / Marinho / Preto / Verde Militar.,65.00,Macaquinhos,11,/uploads/macaquinho-gisele-basic-branco-01.jpg
+Macaquinho Jenifer - Basic,Macaquinho Jenifer da Coleção Basic. Cores: Branco / Chocolate / Cinza / Marinho / Preto.,65.00,Macaquinhos,13,/uploads/macaquinho-jenifer-basic-branco-01.jpg
+Shorts Basic - Basic,Shorts Basic da Coleção Basic. Cores: Bordo / Branco / Cafe / Chocolate / Cinza / Cinza Escuro / Expresso / Laranja / Marinho / Preto / Verde Bandeira / Vermelho Escalate.,40.00,Shorts,8,/uploads/shorts-basic-bordo-01.jpg
+Shorts Saia Lola,Shorts Saia Lola da Coleção Basic. Cores: Chocolate / Cinza / Preto.,40.00,Shorts,4,/uploads/shorts-saia-lola-basic-chocolate-01.jpg
+Top Jess - Basic,Top Jess da Coleção Basic. Cores: Chocolate / Cinza / Marinho / Preto.,35.00,Tops,6,/uploads/top-jess-basic-chocolate-01.jpg
+Cropped Karina,Cropped Karina da Coleção Beach Tênis. Cores: Preto / Rosa Barbie / Verde Militar.,30.00,Croppeds,15,/uploads/cropped-karina-beach-tenis-preto-01.jpg
+Macaquinho Manu Liso,Macaquinho Manu Liso da Coleção Beach Tênis. Cores: Verde Militar.,65.00,Macaquinhos,10,/uploads/macaquinho-manu-liso-beach-tenis-verde-militar-01.jpg
+Vestido Lari - Beach Tênis,Vestido Lari da Coleção Beach Tênis. Cores: Preto / Rosa Barbie / Verde Militar.,90.00,Vestidos,9,/uploads/vestido-lari-beach-tenis-preto-01.jpg
+Macaquinho Karol - Black&Pink,Macaquinho Karol da Coleção Black&Pink. Cores: Preto / Rosa.,65.00,Macaquinhos,8,/uploads/macaquinho-karol-black-pink-preto-01.jpg
+Shorts Basic - Black&Pink,Shorts Basic da Coleção Black&Pink. Cores: Preto / Rosa.,40.00,Shorts,6,/uploads/shorts-basic-black-pink-preto-01.jpg
+Top Camila,Top Camila da Coleção Black&Pink. Cores: Preto / Rosa.,35.00,Tops,7,/uploads/top-camila-black-pink-preto-01.jpg
+Top Jessica Manga Curta,Top Jessica Manga Curta da Coleção Black&Pink. Cores: Preto / Rosa.,35.00,Tops,9,/uploads/top-jessica-manga-curta-black-pink-preto-01.jpg
+Cropped Lilian,Cropped Lilian da Coleção Blaze. Cores: Chocolate Escuro / Preto / Vermelho Escarlate.,30.00,Croppeds,5,/uploads/cropped-lilian-blaze-chocolate-escuro-01.jpg
+Legging Basic - Blaze,Legging Basic da Coleção Blaze. Cores: Marrom Escuro / Preto / Vermelho Escarlate.,70.00,Leggings,5,/uploads/legging-basic-blaze-marrom-escuro-01.jpg
+Macaquinho Manu Listras - Blaze,Macaquinho Manu Listras da Coleção Blaze. Cores: Chocolate Escuro / Preto / Vermelho Escarlate.,65.00,Macaquinhos,10,/uploads/macaquinho-manu-listras-blaze-chocolate-escuro-01.jpg
+Shorts Livia - Blaze,Shorts Livia da Coleção Blaze. Cores: Chocolate Escuro / Preto / Vermelho Escarlate.,40.00,Shorts,5,/uploads/shorts-livia-blaze-chocolate-escuro-01.jpg
+Top Kendall,Top Kendall da Coleção Blaze. Cores: Chocolate Escuro / Preto / Vermelho Escarlate.,35.00,Tops,9,/uploads/top-kendall-blaze-chocolate-escuro-01.jpg
+Cropped Anne,Cropped Anne da Coleção Blend. Cores: Caffe Latte / Creme / Expresso / Frappuccino.,30.00,Croppeds,9,/uploads/cropped-anne-blend-caffe-latte-01.jpg
+Cropped Maitê,Cropped Maitê da Coleção Blend. Cores: Caffe Latte / Creme / Expresso / Frappuccino.,30.00,Croppeds,13,/uploads/cropped-maite-blend-caffe-latte-01.jpg
+Legging Basic - Blend,Legging Basic - Blend da Coleção Blend. Cores: Caffe Latte / Creme / Expresso / Frappuccino.,70.00,Leggings,8,/uploads/legging-basic-blend-caffe-latte-01.jpg
+Macacão Bia,Macacão Bia da Coleção Blend. Cores: Caffe Latte / Creme / Expresso / Frappuccino.,85.00,Macacões,4,/uploads/macacao-bia-blend-caffe-latte-01.jpg
+Macaquinho Bianca,Macaquinho Bianca da Coleção Blend. Cores: Caffe Latte / Creme / Expresso / Frappuccino.,65.00,Macaquinhos,15,/uploads/macaquinho-bianca-blend-caffe-latte-01.jpg
+Shorts Basic - Blend,Shorts Basic - Blend da Coleção Blend. Cores: Caffe Latte / Creme / Expresso / Frappuccino.,40.00,Shorts,11,/uploads/shorts-basic-blend-caffe-latte-01.jpg
+Blusa Paloma - B&M,Blusa Paloma - B&M da Coleção Butter & Mocha. Cores: Amarelo / Chocolate Escuro / Preto.,35.00,Blusas,12,/uploads/blusa-paloma-b-m-butter-mocha-amarelo-01.jpg
+Cropped Debora - B&M,Cropped Debora - B&M da Coleção Butter & Mocha. Cores: Amarelo / Chocolate Escuro / Preto.,30.00,Croppeds,5,/uploads/cropped-debora-b-m-butter-mocha-amarelo-01.jpg
+Cropped Mel - B&M,Cropped Mel - B&M da Coleção Butter & Mocha. Cores: Amarelo / Chocolate Escuro / Preto.,30.00,Croppeds,10,/uploads/cropped-mel-b-m-butter-mocha-amarelo-01.jpg
+Legging Basic - B&M,Legging Basic - B&M da Coleção Butter & Mocha. Cores: Amarelo / Chocolate Escuro / Preto.,70.00,Leggings,5,/uploads/legging-basic-b-m-butter-mocha-amarelo-01.jpg
+Macacão Luana - B&M,Macacão Luana - B&M da Coleção Butter & Mocha. Cores: Amarelo / Chocolate Escuro / Preto.,85.00,Macacões,12,/uploads/macacao-luana-b-m-butter-mocha-amarelo-01.jpg
+Shorts Basic - B&M,Shorts Basic - B&M da Coleção Butter & Mocha. Cores: Amarelo / Chocolate Escuro / Preto.,40.00,Shorts,8,/uploads/shorts-basic-b-m-butter-mocha-amarelo-01.jpg
+Cropped Isa,Cropped Isa da Coleção Canelado. Cores: Preto.,30.00,Croppeds,14,/uploads/cropped-isa-canelado-preto-01.jpg
+Legging Isa,Legging Isa da Coleção Canelado. Cores: Marrom / Preto.,70.00,Leggings,13,/uploads/legging-isa-canelado-marrom-01.jpg
+Macacão Priscila Canelado,Macacão Priscila Canelado da Coleção Canelado. Cores: Marrom / Preto.,85.00,Macacões,9,/uploads/macacao-priscila-canelado-marrom-01.jpg
+Shorts Isa,Shorts Isa da Coleção Canelado. Cores: Marrom / Preta.,40.00,Shorts,13,/uploads/shorts-isa-canelado-marrom-01.jpg
+Cropped Geovana,Cropped Geovana da Coleção College. Cores: Marinho com Creme / Preto com Creme / Vermelho com Creme.,30.00,Croppeds,7,/uploads/cropped-geovana-college-marinho-com-creme-01.jpg
+Cropped Tabata,Cropped Tabata da Coleção College. Cores: Marinho com Creme / Preto com Creme.,30.00,Croppeds,15,/uploads/cropped-tabata-college-marinho-com-creme-01.jpg
+Legging Flare Bia,Legging Flare Bia da Coleção College. Cores: Marinho com Creme / Preto com Creme / Vermelho com Creme.,70.00,Leggings,5,/uploads/legging-flare-bia-college-marinho-com-creme-01.jpg
+Macaquinho Luna - College,Macaquinho Luna - College da Coleção College. Cores: Marinho com Creme / Preto com Creme / Vermelho com Creme.,65.00,Macaquinhos,4,/uploads/macaquinho-luna-college-marinho-com-creme-01.jpg
+Shorts Alice,Shorts Alice da Coleção College. Cores: Marinho com Creme / Preto com Creme / Vermelho com Creme.,40.00,Shorts,14,/uploads/shorts-alice-college-marinho-com-creme-01.jpg
+Cropped Laura,Cropped Laura da Coleção CrossFit. Cores: Azul Marinho / Chocolate / Preto.,30.00,Croppeds,7,/uploads/cropped-laura-crossfit-azul-marinho-01.jpg
+Cropped Manga Longa Debora,Cropped Manga Longa Debora da Coleção CrossFit. Cores: Chocolate / Marinho / Preto.,30.00,Croppeds,8,/uploads/cropped-manga-longa-debora-crossfit-chocolate-01.jpg
+Legging Listra Leticia,Legging Listra Leticia da Coleção CrossFit. Cores: Azul Marinho / Chocolate / Preto.,70.00,Leggings,5,/uploads/legging-listra-leticia-crossfit-azul-marinho-01.jpg
+Macaquinho Manga Longa Valentina,Macaquinho Manga Longa Valentina da Coleção CrossFit. Cores: Chocolate com Creme / Marinho com Branco / Preto com Branco.,65.00,Macaquinhos,7,/uploads/macaquinho-manga-longa-valentina-crossfit-chocolate-com-creme-01.jpg
+Macaquinho Manu Listras - CrossFit,Macaquinho Manu Listras da Coleção CrossFit. Cores: Azul Marinho com Branco / Chocolate com Creme / Preto com Branco / Preto com Rosa Barbie.,65.00,Macaquinhos,5,/uploads/macaquinho-manu-listras-crossfit-azul-marinho-com-branco-01.jpg
+Shorts Listra Maísa,Shorts Listra Maísa da Coleção CrossFit. Cores: Azul Marinho / Chocolate / Preto.,40.00,Shorts,10,/uploads/shorts-listra-maisa-crossfit-azul-marinho-01.jpg
+Cropped Virginia,Cropped Virginia da Coleção Dual Mood. Cores: Chocolate com Creme / Preto com Rosa Barbie.,30.00,Croppeds,8,/uploads/cropped-virginia-dual-mood-chocolate-com-creme-01.jpg
+Legging Julia - Dual Mood,Legging Julia da Coleção Dual Mood. Cores: Chocolate com Creme / Preto com Rosa Barbie.,70.00,Leggings,11,/uploads/legging-julia-dual-mood-chocolate-com-creme-01.jpg
+Macacão Jessica - Dual Mood,Macacão Jessica da Coleção Dual Mood. Cores: Chocolate com Creme / Preto com Rosa Barbie.,85.00,Macacões,14,/uploads/macacao-jessica-dual-mood-chocolate-com-creme-01.jpg
+Macaquinho Nina Duo,Macaquinho Nina Duo da Coleção Dual Mood. Cores: Chocolate com Creme / Preto com Rosa Barbie.,65.00,Macaquinhos,9,/uploads/macaquinho-nina-duo-dual-mood-chocolate-com-creme-01.jpg
+Short Zoe Duo,Short Zoe Duo da Coleção Dual Mood. Cores: Chocolate com Creme / Preto com Rosa Barbie.,40.00,Shorts,6,/uploads/short-zoe-duo-dual-mood-chocolate-com-creme-01.jpg
+Top Jess Duo,Top Jess Duo da Coleção Dual Mood. Cores: Chocolate com Creme / Preto com Rosa Barbie.,35.00,Tops,9,/uploads/top-jess-duo-dual-mood-chocolate-com-creme-01.jpg
+Cropped Lola - Elevate,Cropped Lola - Elevate da Coleção Elevate. Cores: Bordô / Chocolate Escuro / Preto.,30.00,Croppeds,9,/uploads/cropped-lola-elevate-bordo-01.jpg
+Cropped Maitê - Elevate,Cropped Maitê - Elevate da Coleção Elevate. Cores: Bordô / Chocolate Escuro / Preto.,30.00,Croppeds,7,/uploads/cropped-maite-elevate-bordo-01.jpg
+Legging Listra Leticia - Elevate,Legging Listra Leticia - Elevate da Coleção Elevate. Cores: Bordô / Chocolate Escuro / Preto.,70.00,Leggings,14,/uploads/legging-listra-leticia-elevate-bordo-01.jpg
+Macaquinho Manu Listra - Elevate,Macaquinho Manu Listra - Elevate da Coleção Elevate. Cores: Bordô / Chocolate Escuro / Preto.,65.00,Macaquinhos,8,/uploads/macaquinho-manu-listra-elevate-bordo-01.jpg
+Shorts Listra Maísa - Elevate,Shorts Listra Maísa - Elevate da Coleção Elevate. Cores: Bordô / Chocolate Escuro / Preto.,40.00,Shorts,15,/uploads/shorts-listra-maisa-elevate-bordo-01.jpg
+Cropped Bruna - Essence Marine,Cropped Bruna da Coleção Essence Marine. Cores: Azul Marinho / Chocolate / Cinza / Preto.,30.00,Croppeds,14,/uploads/cropped-bruna-essence-marine-azul-marinho-01.jpg
+Cropped Tati,Cropped Tati da Coleção Essence Marine. Cores: Azul Marinho / Chocolate / Cinza / Preto.,30.00,Croppeds,14,/uploads/cropped-tati-essence-marine-azul-marinho-01.jpg
+Legging Clara - Essence Marine,Legging Clara da Coleção Essence Marine. Cores: Azul Marinho / Chocolate / Cinza / Preto.,70.00,Leggings,5,/uploads/legging-clara-essence-marine-azul-marinho-01.jpg
+Macacão Jessica - Essence Marine,Macacão Jessica da Coleção Essence Marine. Cores: Chocolate com Branco / Cinza com Branco / Marinho com Branco / Preto com Branco.,85.00,Macacões,13,/uploads/macacao-jessica-essence-marine-chocolate-com-branco-01.jpg
+Shorts Bruna - Essence Marine,Shorts Bruna da Coleção Essence Marine. Cores: Azul Marinho / Chocolate / Cinza / Preto.,40.00,Shorts,14,/uploads/shorts-bruna-essence-marine-azul-marinho-01.jpg
+Cropped Mariana,Cropped Mariana da Coleção Euphoria. Cores: Azul Bebe com Marinho / Marinho com Azul Bebe / Preto com Branco.,30.00,Croppeds,6,/uploads/cropped-mariana-euphoria-azul-bebe-com-marinho-01.jpg
+Legging Julia - Euphoria,Legging Julia da Coleção Euphoria. Cores: Azul Bebe com Marinho / Marinho com Azul Bebe / Preto com Branco.,70.00,Leggings,12,/uploads/legging-julia-euphoria-azul-bebe-com-marinho-01.jpg
+Macaquinho Babi,Macaquinho Babi da Coleção Euphoria. Cores: Azul Bebe com Marinho / Marinho com Azul Bebe / Preto com Branco.,65.00,Macaquinhos,15,/uploads/macaquinho-babi-euphoria-azul-bebe-com-marinho-01.jpg
+Shorts Olivia,Shorts Olivia da Coleção Euphoria. Cores: Azul Bebe com Marinho / Marinho com Azul Bebe / Preto com Branco.,40.00,Shorts,7,/uploads/shorts-olivia-euphoria-azul-bebe-com-marinho-01.jpg
+Top Jess - Euphoria,Top Jess da Coleção Euphoria. Cores: Azul Bebe com Marinho / Marinho com Azul Bebe / Preto com Branco.,35.00,Tops,6,/uploads/top-jess-euphoria-azul-bebe-com-marinho-01.jpg
+Cropped Helena,Cropped Helena da Coleção Harmony. Cores: Preto / Rosa Chiclete / Rosa Iogurte / Verde Menta.,32.00,Croppeds,11,/uploads/cropped-helena-harmony-preto-01.jpg
+Cropped Mel,Cropped Mel da Coleção Harmony. Cores: Preto / Rosa Chiclete / Rosa Iogurte / Verde Menta.,30.00,Croppeds,10,/uploads/cropped-mel-harmony-preto-01.jpg
+Legging Basic - Harmony,Legging Basic da Coleção Harmony. Cores: Preto / Rosa Chiclete / Rosa Iogurte / Verde Menta.,70.00,Leggings,8,/uploads/legging-basic-harmony-preto-01.jpg
+Macaquinho Antonia,Macaquinho Antonia da Coleção Harmony. Cores: Preto / Rosa Chiclete / Rosa Iogurte / Verde Menta.,65.00,Macaquinhos,14,/uploads/macaquinho-antonia-harmony-preto-01.jpg
+Shorts Basic - Harmony,Shorts Basic da Coleção Harmony. Cores: Preto / Rosa Chiclete / Rosa Iogurte / Verde Menta.,40.00,Shorts,15,/uploads/shorts-basic-harmony-preto-01.jpg
+Blusa Alice,Blusa Alice da Coleção Motion. Cores: Marrom Escuro / Preto.,35.00,Blusas,12,/uploads/blusa-alice-motion-marrom-escuro-01.jpg
+Cropped Cecilia,Cropped Cecilia da Coleção Motion. Cores: Marrom Escuro com Creme / Preto com Branco.,30.00,Croppeds,7,/uploads/cropped-cecilia-motion-marrom-escuro-com-creme-01.jpg
+Legging Flare Basic - Motion,Legging Flare Basic - Motion da Coleção Motion. Cores: Marrom Escuro / Preto.,70.00,Leggings,14,/uploads/legging-flare-basic-motion-marrom-escuro-01.jpg
+Macaquinho Isabelly,Macaquinho Isabelly da Coleção Motion. Cores: Marrom Escuro / Preto.,65.00,Macaquinhos,9,/uploads/macaquinho-isabelly-motion-marrom-escuro-01.jpg
+Shorts Saia Dani,Shorts Saia Dani da Coleção Motion. Cores: Marrom Escuro / Preto.,40.00,Shorts,4,/uploads/shorts-saia-dani-motion-marrom-escuro-01.jpg
+Cropped Bianca,Cropped Bianca da Coleção Move. Cores: Expresso com Creme / Preto com Branco.,30.00,Croppeds,7,/uploads/cropped-bianca-move-expresso-com-creme-01.jpg
+Legging Daniela,Legging Daniela da Coleção Move. Cores: Expresso com Creme / Preto com Branco.,70.00,Leggings,4,/uploads/legging-daniela-move-expresso-com-creme-01.jpg
+Macacão Veronica,Macacão Veronica da Coleção Move. Cores: Expresso com Creme / Preto com Branco.,85.00,Macacões,9,/uploads/macacao-veronica-move-expresso-com-creme-01.jpg
+Shorts Gigi,Shorts Gigi da Coleção Move. Cores: Expresso com Creme / Preto com Branco.,40.00,Shorts,10,/uploads/shorts-gigi-move-expresso-com-creme-01.jpg
+Top Luana,Top Luana da Coleção Move. Cores: Expresso com Creme / Preto com Branco.,35.00,Tops,8,/uploads/top-luana-move-expresso-com-creme-01.jpg
+Cropped Luna,Cropped Luna da Coleção Neon 25.,30.00,Croppeds,5,/uploads/cropped-luna-neon-25-01.jpg
+Cropped Maju,Cropped Maju da Coleção Neon 25. Cores: Preto.,30.00,Croppeds,7,/uploads/cropped-maju-neon-25-preto-01.jpg
+Legging Julia - Neon 25,Legging Julia da Coleção Neon 25.,70.00,Leggings,13,/uploads/legging-julia-neon-25-01.jpg
+Macaquinho Nina,Macaquinho Nina da Coleção Neon 25.,65.00,Macaquinhos,15,/uploads/macaquinho-nina-neon-25-01.jpg
+Shorts Zoe,Shorts Zoe da Coleção Neon 25.,40.00,Shorts,9,/uploads/shorts-zoe-neon-25-01.jpg
+Cropped Debora Neon,Cropped Debora Neon da Coleção Neon 26. Cores: Preto com Amarelo Neon / Preto com Rosa Neon.,30.00,Croppeds,7,/uploads/cropped-debora-neon-neon-26-preto-com-amarelo-neon-01.jpg
+Cropped Luna Neon,Cropped Luna Neon da Coleção Neon 26. Cores: Preto com Neon.,30.00,Croppeds,14,/uploads/cropped-luna-neon-neon-26-preto-com-neon-01.jpg
+Macacão Jessica Neon,Macacão Jessica Neon da Coleção Neon 26. Cores: Preto com Amarelo Neon / Preto com Rosa Neon.,85.00,Macacões,11,/uploads/macacao-jessica-neon-neon-26-preto-com-amarelo-neon-01.jpg
+Legging Flare,Legging Flare da Coleção News. Cores: Marrom Escuro / Nude / Preto / Verde.,70.00,Leggings,10,/uploads/legging-flare-news-marrom-escuro-01.jpg
+Macaquinho Marcela - News,Macaquinho Marcela da Coleção News. Cores: Marrom Escuro / Nude / Preto / Verde.,65.00,Macaquinhos,14,/uploads/macaquinho-marcela-news-marrom-escuro-01.jpg
+Shorts Basic - News,Shorts Basic da Coleção News. Cores: Marrom Escuro / Nude / Preto / Verde.,40.00,Shorts,11,/uploads/shorts-basic-news-marrom-escuro-01.jpg
+Top Manga Curta Jessica,Top Manga Curta Jessica da Coleção News. Cores: Marrom Escuro / Nude / Preto / Verde.,35.00,Tops,6,/uploads/top-manga-curta-jessica-news-marrom-escuro-01.jpg
+Cropped Grazy,Cropped Grazy da Coleção Pilates. Cores: Bordo / Pink / Preto / Rosa Iogurte.,30.00,Croppeds,8,/uploads/cropped-grazy-pilates-bordo-01.jpg
+Cropped Manga Longa Jessica,Cropped Manga Longa Jessica da Coleção Pilates. Cores: Bordô / Pink / Preto / Rosa Iogurte.,30.00,Croppeds,6,/uploads/cropped-manga-longa-jessica-pilates-bordo-01.jpg
+Cropped Sara,Cropped Sara da Coleção Pilates. Cores: Bordo / Pink / Preto / Rosa Iogurte.,30.00,Croppeds,7,/uploads/cropped-sara-pilates-bordo-01.jpg
+Macaquinho Paola,Macaquinho Paola da Coleção Pilates. Cores: Bordô / Pink / Preto / Rosa Iogurte.,65.00,Macaquinhos,15,/uploads/macaquinho-paola-pilates-bordo-01.jpg
+Shorts Pietra,Shorts Pietra da Coleção Pilates. Cores: Bordô / Pink / Preto / Rosa Iogurte.,40.00,Shorts,12,/uploads/shorts-pietra-pilates-bordo-01.jpg
+Top Alice,Top Alice da Coleção Pilates. Cores: Bordô / Pink / Preto / Rosa Iogurte.,35.00,Tops,12,/uploads/top-alice-pilates-bordo-01.jpg
+Cropped Ariane,Cropped Ariane da Coleção Pulse. Cores: Azul Marinho / Preto / Roxo Escuro.,30.00,Croppeds,8,/uploads/cropped-ariane-pulse-azul-marinho-01.jpg
+Cropped Manuela,Cropped Manuela da Coleção Pulse. Cores: Azul Marinho / Preto / Roxo Escuro.,30.00,Croppeds,15,/uploads/cropped-manuela-pulse-azul-marinho-01.jpg
+Legging Dafne,Legging Dafne da Coleção Pulse. Cores: Azul Marinho / Preto / Roxo Escuro.,70.00,Leggings,13,/uploads/legging-dafne-pulse-azul-marinho-01.jpg
+Macaquinho Alessandra,Macaquinho Alessandra da Coleção Pulse. Cores: Azul Marinho / Preto / Roxo Escuro.,65.00,Macaquinhos,10,/uploads/macaquinho-alessandra-pulse-azul-marinho-01.jpg
+Shorts Cris,Shorts Cris da Coleção Pulse. Cores: Azul Marinho / Preto / Roxo Escuro.,40.00,Shorts,13,/uploads/shorts-cris-pulse-azul-marinho-01.jpg
+Cropped Bruna - Running,Cropped Bruna da Coleção Running. Cores: Lilás / Preto / Rosa Barbie.,30.00,Croppeds,10,/uploads/cropped-bruna-running-lilas-01.jpg
+Cropped Vivi - Running,Cropped Vivi da Coleção Running. Cores: Lilás / Preto / Rosa Barbie.,28.00,Croppeds,9,/uploads/cropped-vivi-running-lilas-01.jpg
+Legging Eloa - Running,Legging Eloa da Coleção Running. Cores: Lilás / Preto / Rosa Barbie.,70.00,Leggings,7,/uploads/legging-eloa-running-lilas-01.jpg
+Macaquinho Camila,Macaquinho Camila da Coleção Running. Cores: Lilás / Preto / Rosa Barbie.,65.00,Macaquinhos,6,/uploads/macaquinho-camila-running-lilas-01.jpg
+Regata Mari,Regata Mari da Coleção Running. Cores: Lilás / Preto / Rosa Barbie.,35.00,Regatas,12,/uploads/regata-mari-running-lilas-01.jpg
+Shorts Livia - Running,Shorts Livia da Coleção Running. Cores: Lilás / Preto / Rosa Barbie.,40.00,Shorts,11,/uploads/shorts-livia-running-lilas-01.jpg
+Shorts Nicole - Running,Shorts Nicole da Coleção Running. Cores: Lilás / Preto / Rosa Barbie.,40.00,Shorts,5,/uploads/shorts-nicole-running-lilas-01.jpg
+Blusa Joyce,Blusa Joyce da Coleção Summer Gym. Cores: Amarelo / Chocolate Escuro / Preto / Rosa Barbie.,35.00,Blusas,4,/uploads/blusa-joyce-summer-gym-amarelo-01.jpg
+Jaqueta Laura,Jaqueta Laura da Coleção Summer Gym. Cores: Amarelo / Chocolate Escuro / Preto / Rosa Barbie.,95.00,Jaquetas,5,/uploads/jaqueta-laura-summer-gym-amarelo-01.jpg
+Legging Basic - SG,Legging Basic - SG da Coleção Summer Gym. Cores: Amarelo / Chocolate Escuro / Preto / Rosa Barbie.,70.00,Leggings,6,/uploads/legging-basic-sg-summer-gym-amarelo-01.jpg
+Macaquinho Caroline Listras,Macaquinho Caroline Listras da Coleção Summer Gym. Cores: Amarelo / Chocolate Escuro / Preto / Rosa Barbie.,65.00,Macaquinhos,14,/uploads/macaquinho-caroline-listras-summer-gym-amarelo-01.jpg
+Cropped Carla - Summer,Cropped Carla da Coleção Summer. Cores: Amarelo / Azul / Preto / Rosa claro.,30.00,Croppeds,6,/uploads/cropped-carla-summer-amarelo-01.jpg
+Cropped Vivi - Summer,Cropped Vivi da Coleção Summer. Cores: Amarelo / Azul / Preto / Rosa claro.,28.00,Croppeds,14,/uploads/cropped-vivi-summer-amarelo-01.jpg
+Legging Eloa - Summer,Legging Eloa da Coleção Summer. Cores: Amarelo / Azul / Preto / Rosa claro.,70.00,Leggings,10,/uploads/legging-eloa-summer-amarelo-01.jpg
+Macaquinho Manu,Macaquinho Manu da Coleção Summer. Cores: Amarelo / Azul / Preto / Rosa claro.,65.00,Macaquinhos,13,/uploads/macaquinho-manu-summer-amarelo-01.jpg
+Shorts Basic - Summer,Shorts Basic da Coleção Summer. Cores: Amarelo / Azul / Preto / Rosa claro.,40.00,Shorts,5,/uploads/shorts-basic-summer-amarelo-01.jpg
+Cropped Naty,Cropped Naty da Coleção Sunrise. Cores: Laranja / Lavanda / Preto / Rosa Claro.,30.00,Croppeds,10,/uploads/cropped-naty-sunrise-laranja-01.jpg
+Legging Isa Poliamida,Legging Isa Poliamida da Coleção Sunrise. Cores: Laranja / Lavanda / Preto / Rosa Claro.,70.00,Leggings,10,/uploads/legging-isa-poliamida-sunrise-laranja-01.jpg
+Macacão Sabrina - Sunrise,Macacão Sabrina da Coleção Sunrise. Cores: Laranja / Lavanda / Preto / Rosa Claro.,85.00,Macacões,13,/uploads/macacao-sabrina-sunrise-laranja-01.jpg
+Macaquinho Sabrina,Macaquinho Sabrina da Coleção Sunrise. Cores: Laranja / Lavanda.,65.00,Macaquinhos,11,/uploads/macaquinho-sabrina-sunrise-laranja-01.jpg
+Shorts Isa Poliamida,Shorts Isa Poliamida da Coleção Sunrise. Cores: Laranja / Lavanda / Preto / Rosa Claro.,40.00,Shorts,12,/uploads/shorts-isa-poliamida-sunrise-laranja-01.jpg
+Top Isadora,Top Isadora da Coleção Sunrise. Cores: Laranja / Lavanda / Preto / Rosa Claro.,35.00,Tops,8,/uploads/top-isadora-sunrise-laranja-01.jpg
+Blusa Vick,Blusa Vick da Coleção Sunset. Cores: Chocolate Escuro / Preto / Rosa Barbie.,35.00,Blusas,12,/uploads/blusa-vick-sunset-chocolate-escuro-01.jpg
+Cropped Ana,Cropped Ana da Coleção Sunset. Cores: Chocolate Escuro com Creme / Preto com Branco / Rosa Barbie com Branco.,30.00,Croppeds,4,/uploads/cropped-ana-sunset-chocolate-escuro-com-creme-01.jpg
+Legging Patricia - Sunset,Legging Patricia da Coleção Sunset. Cores: Chocolate Escuro com Creme / Preto com Branco / Rosa Barbie com Branco.,70.00,Leggings,14,/uploads/legging-patricia-sunset-chocolate-escuro-com-creme-01.jpg
+Macaquinho Karol - Sunset,Macaquinho Karol da Coleção Sunset. Cores: Azul Bebe / Bordô / Chocolate Escuro / Cinza / Laranja / Preto / Rosa Barbie.,65.00,Macaquinhos,15,/uploads/macaquinho-karol-sunset-azul-bebe-01.jpg
+Shorts Vanessa - Sunset,Shorts Vanessa da Coleção Sunset. Cores: Chocolate Escuro com Creme / Preto com Branco / Rosa Barbie com Branco.,40.00,Shorts,5,/uploads/shorts-vanessa-sunset-chocolate-escuro-com-creme-01.jpg
+Vestido Cintia,Vestido Cintia da Coleção Sunset. Cores: Chocolate Escuro com Creme / Preto com Branco / Rosa Barbie com Branco.,90.00,Vestidos,14,/uploads/vestido-cintia-sunset-chocolate-escuro-com-creme-01.jpg
+Cropped Thais - Umber,Cropped Thais da Coleção Umber. Cores: Branco / Chocolate / Espresso / Preto.,30.00,Croppeds,12,/uploads/cropped-thais-umber-branco-01.jpg
+Jaqueta Isa,Jaqueta Isa da Coleção Umber. Cores: Azul Royal / Bordo / Branco / Chocolate / Chocolate Escuro / Cinza Escuro / Creme / Marinho / Preto / Rosa Barbie.,95.00,Jaquetas,8,/uploads/jaqueta-isa-umber-azul-royal-01.jpg
+Legging Basic - Umber,Legging Basic da Coleção Umber. Cores: Branco / Chocolate / Espresso / Preto.,70.00,Leggings,14,/uploads/legging-basic-umber-branco-01.jpg
+Macacão Priscila - Umber,Macacão Priscila da Coleção Umber. Cores: Chocolate / Espresso / Preto.,85.00,Macacões,9,/uploads/macacao-priscila-umber-chocolate-01.jpg
+Top Beatriz,Top Beatriz da Coleção Umber. Cores: Branco com Preto / Chocolate com Creme / Creme com Chocolate / Espresso com Rosa Pastel / Preto com Branco / Rosa Pastel com Espresso.,35.00,Tops,5,/uploads/top-beatriz-umber-branco-com-preto-01.jpg
+Cropped Isabel - Velvet,Cropped Isabel da Coleção Velvet. Cores: Bordo / Preto / Vermelho.,30.00,Croppeds,8,/uploads/cropped-isabel-velvet-bordo-01.jpg
+Cropped Vivi - Velvet,Cropped Vivi da Coleção Velvet. Cores: Bordo / Preto / Vermelho.,28.00,Croppeds,10,/uploads/cropped-vivi-velvet-bordo-01.jpg
+Legging Patricia - Velvet,Legging Patricia da Coleção Velvet. Cores: Bordo / Preto / Vermelho.,70.00,Leggings,6,/uploads/legging-patricia-velvet-bordo-01.jpg
+Macaquinho Gabriela - Velvet,Macaquinho Gabriela da Coleção Velvet. Cores: Bordo / Preto.,65.00,Macaquinhos,11,/uploads/macaquinho-gabriela-velvet-bordo-01.jpg
+Shorts Maira,Shorts Maira da Coleção Velvet. Cores: Bordo / Preto / Vermelho.,40.00,Shorts,4,/uploads/shorts-maira-velvet-bordo-01.jpg
+Vestido Lari - Velvet,Vestido Lari da Coleção Velvet. Cores: Bordo / Preto / Vermelho.,90.00,Vestidos,15,/uploads/vestido-lari-velvet-bordo-01.jpg
+Cropped Isabel - Winter Power,Cropped Isabel da Coleção Winter Power. Cores: Branco / Preto.,30.00,Croppeds,15,/uploads/cropped-isabel-winter-power-branco-01.jpg
+Cropped Vivi - Winter Power,Cropped Vivi da Coleção Winter Power. Cores: Branco / Preto.,28.00,Croppeds,8,/uploads/cropped-vivi-winter-power-branco-01.jpg
+Legging Eloá,Legging Eloá da Coleção Winter Power. Cores: Branco / Preto.,70.00,Leggings,12,/uploads/legging-eloa-winter-power-branco-01.jpg
+Macacão Gabriela,Macacão Gabriela da Coleção Winter Power. Cores: Branco / Preto.,85.00,Macacões,6,/uploads/macacao-gabriela-winter-power-branco-01.jpg
+Macaquinho Gabriela - Winter Power,Macaquinho Gabriela da Coleção Winter Power. Cores: Branco / Preto.,65.00,Macaquinhos,12,/uploads/macaquinho-gabriela-winter-power-branco-01.jpg
+Shorts Nicole - Winter Power,Shorts Nicole da Coleção Winter Power. Cores: Branco / Preto.,40.00,Shorts,5,/uploads/shorts-nicole-winter-power-branco-01.jpg
+Blusa Emma,Blusa Emma da Coleção Energy Trip. Cores: Branco / Marinho / Preto.,35.00,Blusas,14,/uploads/blusa-emma-energy-trip-branco-01.jpg
+Cropped Jenifer,Cropped Jenifer da Coleção Energy Trip. Cores: Branco / Marinho / Preto.,30.00,Croppeds,8,/uploads/cropped-jenifer-energy-trip-branco-01.jpg
+Cropped Sabrina,Cropped Sabrina da Coleção Energy Trip. Cores: Branco / Marinho / Preto.,30.00,Croppeds,14,/uploads/cropped-sabrina-energy-trip-branco-01.jpg
+Legging Flare Fernanda,Legging Flare Fernanda da Coleção Energy Trip. Cores: Marinho / Preta.,70.00,Leggings,12,/uploads/legging-flare-fernanda-energy-trip-marinho-01.jpg
+Macacão Alice,Macacão Alice da Coleção Energy Trip. Cores: Marinho / Preto.,85.00,Macacões,13,/uploads/macacao-alice-energy-trip-marinho-01.jpg
+Shorts Saia Mirela,Shorts Saia Mirela da Coleção Energy Trip. Cores: Branco / Marinho / Preto.,40.00,Shorts,7,/uploads/shorts-saia-mirela-energy-trip-branco-01.jpg
 Shorts Maíra,Shorts Maíra,40.00,Shorts,2,

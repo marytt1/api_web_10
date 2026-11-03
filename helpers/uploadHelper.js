@@ -6,7 +6,6 @@ const crypto = require('crypto');
 const UPLOAD_DIR = path.join(__dirname, '..', 'uploads');
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
-// A extensão vem do tipo real do arquivo, nunca do nome que o cliente mandou
 const EXTENSIONS = {
   'image/jpeg': '.jpg',
   'image/png': '.png',
@@ -30,7 +29,6 @@ const upload = multer({
   },
 });
 
-// Converte os erros do multer em respostas JSON que o front sabe mostrar
 function handle(middleware, maxFiles) {
   return (req, res, next) => {
     middleware(req, res, (err) => {
@@ -53,7 +51,7 @@ function handle(middleware, maxFiles) {
 const uploadSingle = (field) => handle(upload.single(field), 1);
 const uploadMultiple = (field, max = 10) => handle(upload.array(field, max), max);
 
-// Apaga do disco uma imagem enviada por upload (ignora URLs externas)
+// Apaga do disco uma imagem enviada por upload
 function removeLocalImage(imageUrl) {
   if (!imageUrl || !imageUrl.startsWith('/uploads/')) return;
   fs.unlink(path.join(UPLOAD_DIR, path.basename(imageUrl)), () => {});

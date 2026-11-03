@@ -3,3 +3,5 @@ node_modules/
 *.sqlite
 *.db
 *.sqlite-journal
+
+uploads/
