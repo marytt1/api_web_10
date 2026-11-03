@@ -3,6 +3,7 @@ const cors = require('cors');
 const conn = require('./db/conn');
 require('dotenv').config();
 const api = express();
+const path = require('path');
 
 //  MIDDLEWARES 
 api.use(cors({
@@ -11,6 +12,9 @@ api.use(cors({
 }));
 api.use(express.json());
 
+// UPLOAD DAS FOTOS DOS PRODUTOS PELO ADMIN
+api.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // IMPORTAÇÃO DOS MODELS sincronizar com banco
 require('./models/Users');
 require('./models/Product');
@@ -18,6 +22,7 @@ require('./models/Variant');
 require('./models/Favorite');
 require('./models/Order');
 require('./models/OrderItem');
+require('./models/ProductImage');
 
 //   IMPORTAÇÃO DAS ROTAS
 const userRoutes = require('./routes/userRoutes');

@@ -3,7 +3,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const { computeSize } = require('../helpers/sizeTable');
 require('dotenv').config();
+
+// Guarda o email em minúsculo e sem espaços
+const normalizeEmail = (email) => String(email || '').trim().toLowerCase();
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const { Op } = require('sequelize');
  
@@ -21,50 +26,61 @@ const transporter = nodemailer.createTransport({
 });
 
 module.exports = class UserController {
-    
+
     // Método para registrar usuário
     static async register(req, res) {
-        const { name, email, password} = req.body;
+        const { name, password } = req.body;
+        const email = normalizeEmail(req.body.email);
 
         // Validação de campos obrigatórios
         if (!name || !email || !password) {
             return res.status(422).json({ message: 'Todos os campos (nome, e-mail e senha) são obrigatórios!' });
         }
-
-        // Verifica se o e-mail já existe
-        const userExists = await User.findOne({ where: { email: email } });
-        if (userExists) {
-        return res.status(409).json({ message: 'Este e-mail já está registado no system!' });
+        // Validar email
+        if (!isValidEmail(email)) {
+            return res.status(422).json({ message: 'Informe um e-mail válido.' });
         }
-        // Criptografar a senha
-        const salt = await bcrypt.genSalt(12);
-        const passwordHash = await bcrypt.hash(password, salt);
+        // Validar senha
+        if (typeof password !== 'string' || password.length < 8) {
+            return res.status(422).json({ message: 'A senha deve ter no mínimo 8 caracteres.' });
+        }
 
-        // Criar o novo usuário no banco
         try {
-            await User.create({
-                name: name,
-                email: email,
-                password: passwordHash,
-            });
+            // Verifica se o e-mail já existe
+            const userExists = await User.findOne({ where: { email } });
+            if (userExists) {
+                return res.status(409).json({ message: 'Este e-mail já está cadastrado.' });
+            }
+
+            // Criptografar a senha
+            const salt = await bcrypt.genSalt(12);
+            const passwordHash = await bcrypt.hash(password, salt);
+
+            // Criar o novo usuário no banco
+            await User.create({ name: String(name).trim(), email, password: passwordHash });
             res.status(200).json({ message: 'Usuário cadastrado com sucesso' });
         } catch (error) {
-            res.status(422).json({ message: error.message });
-        }    
+            console.error('register:', error.message);
+            res.status(500).json({ message: 'Erro ao cadastrar o usuário.' });
+        }
     }
-
-    // Método para listar todos os usuários
+  
+    // Método para listar todos os usuários (excluso senhas)
     static async listAll(req, res) {
         try {
-            const users = await User.findAll();
+            const users = await User.findAll({
+                attributes: { exclude: ['password', 'resetPasswordToken', 'resetPasswordExpires'] },
+            });
             res.status(200).json({ users });    
         } catch (error) {
             res.status(422).json({ error: error.message });
         }
     }
+    
     // Método para realizar o Login
     static async login(req, res) {
-        const { email, password } = req.body;
+        const { password } = req.body;
+        const email = normalizeEmail(req.body.email);
 
         // Validação de preenchimento
         if (!email || !password) {
@@ -98,7 +114,8 @@ module.exports = class UserController {
                 user: {
                     id: user.id,
                     name: user.name,
-                    email: user.email
+                    email: user.email,
+                    isAdmin: user.isAdmin
                 }
             });
 
@@ -109,52 +126,48 @@ module.exports = class UserController {
 
     // CALCULADORA DE TAMANHOS
     static async calculateSize(req, res) {
-        // Recebe os dados do formulário do front-end
-        const { userId, busto, cintura, quadril } = req.body;
+        const busto = Number((req.body || {}).busto);
+        const cintura = Number((req.body || {}).cintura);
+        const quadril = Number((req.body || {}).quadril);
 
-        if (!busto || !cintura || !quadril) {
-            return res.status(422).json({ message: 'Envie todas as medidas (busto, cintura e quadril) para o cálculo.' });
+        const valid = [busto, cintura, quadril].every((v) => Number.isFinite(v) && v >= 30 && v <= 250);
+        if (!valid) {
+        return res.status(422).json({
+            message: 'Informe busto, cintura e quadril em centímetros (valores entre 30 e 250).',
+        });
         }
 
-        let tamanhoSugerido = "Tamanho não identificado";
+        const result = computeSize(busto, cintura, quadril);
 
-        // Lógica de cálculo baseada na Tabela de Referência
-        // Usa o limite máximo de cada tamanho para garantir que a peça sirva
-        if (busto <= 84 && cintura <= 64 && quadril <= 91) {
-            tamanhoSugerido = "P";
-        } else if (busto <= 90 && cintura <= 70 && quadril <= 97) {
-            tamanhoSugerido = "M";
-        } else if (busto <= 96 && cintura <= 76 && quadril <= 103) {
-            tamanhoSugerido = "G";
-        } else if (busto <= 104 && cintura <= 84 && quadril <= 111) {
-            tamanhoSugerido = "GG";
-        } else {
-            tamanhoSugerido = "Sob Medida (Consulte no WhatsApp)";
-        }
-
+        // Logado: guarda as medidas no perfil 
+        if (req.user && req.user.id) {
         try {
-            // Se o usuário estiver logado , atualiza o perfil dele com essas medidas
-            if (userId) {
-                await User.update(
-                    { busto, cintura, quadril },
-                    { where: { id: userId } }
-                );
-            }
-
-            res.status(200).json({ 
-                message: 'Cálculo realizado com sucesso!', 
-                tamanhoSugerido: tamanhoSugerido 
-            });
-
+            await User.update({ busto, cintura, quadril }, { where: { id: req.user.id } });
         } catch (error) {
-            res.status(500).json({ message: 'Erro ao processar medidas', error: error.message });
+            console.error('calculateSize (salvar medidas):', error.message);
         }
+        }
+
+        if (result.status === 'above') {
+        return res.status(200).json({
+            message: 'Alguma medida passa do maior tamanho da tabela.',
+            status: 'above',
+            tamanhoSugerido: 'Sob Medida (Consulte no WhatsApp)',
+        });
+        }
+
+        res.status(200).json({
+        message: 'Cálculo realizado com sucesso!',
+        ...result,
+        tamanhoSugerido: result.size,
+        });
     }
+
     // MÉTODO PARA GERAR TOKEN E ENVIAR E-MAIL
     static async forgotPassword(req, res) {
-        const { email } = req.body;
- 
-        if (!email || typeof email !== 'string') {
+        const email = normalizeEmail(req.body.email);
+
+        if (typeof req.body.email !== 'string' || !email) {
             return res.status(422).json({ message: 'O e-mail é obrigatório!' });
         }
  
@@ -169,7 +182,7 @@ module.exports = class UserController {
                 return res.status(500).json({ message: 'Erro ao processar a solicitação.' });
             }
  
-            const user = await User.findOne({ where: { email: email.trim() } });
+            const user = await User.findOne({ where: { email: email} });
  
             if (user) {
                 const token = crypto.randomBytes(32).toString('hex');
@@ -216,7 +229,7 @@ module.exports = class UserController {
         }
     }
  
-    // MÉTODO PARA GUARDAR A NOVA SENHA
+    // MÉTODO PARA GUARDAR A NOVA SENHA (USUÁRIO NÃO LOGADO)
     static async resetPassword(req, res) {
         const { token } = req.params;
         const { newPassword } = req.body;
@@ -255,4 +268,37 @@ module.exports = class UserController {
             return res.status(500).json({ message: 'Erro ao redefinir a senha.' });
         }
     }
+
+    // MÉTODO PARA ALTERAR A SENHA (USUÁRIO LOGADO)
+    static async changePassword(req, res) {
+        const { currentPassword, newPassword } = req.body;
+
+        if (!currentPassword || !newPassword) {
+            return res.status(422).json({ message: 'Informe a senha atual e a nova senha.' });
+        }
+        if (typeof newPassword !== 'string' || newPassword.length < 8) {
+            return res.status(422).json({ message: 'A nova senha deve ter no mínimo 8 caracteres.' });
+        }
+
+        try {
+            const user = await User.findByPk(req.user.id);
+            if (!user) {
+                return res.status(404).json({ message: 'Usuário não encontrado!' });
+            }
+
+            const ok = await bcrypt.compare(currentPassword, user.password);
+            if (!ok) {
+            // 422 (e não 401): 401 faria o front deslogar o usuário
+                return res.status(422).json({ message: 'Senha atual incorreta.' });
+            }
+
+            const salt = await bcrypt.genSalt(12);
+            await user.update({ password: await bcrypt.hash(newPassword, salt) });
+
+            res.status(200).json({ message: 'Senha alterada com sucesso!' });
+        } catch (error) {
+        console.error('changePassword:', error.message);
+        res.status(500).json({ message: 'Erro ao alterar a senha.' });
+    }
+  }
 }
