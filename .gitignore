@@ -5,3 +5,7 @@ node_modules/
 *.sqlite-journal
 
 uploads/
+
+produtos.csv
+fotos.csv
+variacoes.csv

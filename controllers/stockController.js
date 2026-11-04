@@ -27,7 +27,8 @@ module.exports = class StockController {
             const variants = await Variant.findAll({
                 where,
                 include: [{ model: Product, attributes: ['id', 'name', 'category', 'price'] }],
-                order: [['sku', 'ASC']]
+                order: [['sku', 'ASC']],
+                subQuery: false // Evita subquery para permitir o uso de alias no where
             });
 
             const items = variants.map((v) => ({

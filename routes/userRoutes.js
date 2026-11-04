@@ -18,9 +18,6 @@ router.post('/login', UserController.login);
 // Rota GET para listar (buscar dados somente admin)
 router.get('/', verifyAdmin, UserController.listAll);
 
-// Rota POST para a Calculadora de Medidas
-router.post('/size-guide', UserController.calculateSize);
-
 // Rota POST para o guia de tamanhos (Provador) do visitante
 router.post('/size-guide', optionalAuth, UserController.calculateSize);
 

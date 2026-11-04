@@ -4,6 +4,7 @@ const conn = require('./db/conn');
 require('dotenv').config();
 const api = express();
 const path = require('path');
+const seedProdutos = require('./seedProdutos');
 
 //  MIDDLEWARES 
 api.use(cors({
@@ -50,7 +51,8 @@ api.get('/', (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 conn.sync()
-    .then(() => {
+    .then(async () => {
+        await seedProdutos();
         api.listen(PORT, () => {
             console.log(`Servidor rodando perfeitamente na porta ${PORT}`);
         });
