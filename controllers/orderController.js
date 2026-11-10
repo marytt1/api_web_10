@@ -3,6 +3,8 @@ const db = require('../db/conn');
 const Order = require('../models/Order');
 const OrderItem = require('../models/OrderItem');
 const Variant = require('../models/Variant');
+const User = require('../models/Users');
+const nodemailer = require('nodemailer');
 const { ORDER_INCLUDE, formatOrder } = require('../helpers/orderHelper');
 
 // Fluxo permitido pelo botão de status: Confirmado -> Enviado -> Entregue
@@ -52,12 +54,19 @@ module.exports = class OrderController {
     }
 
     static async confirmPayment(req, res) {
-        const { id } = req.params;
+        const rawId = req.params.id;
+        const id = Number(rawId.replace(/\D/g, '')) || rawId;
 
         try {
+            let confirmedOrder;
+
             await db.transaction(async (t) => {
-                // Trava o pedido: dois cliques simultâneos não baixam o estoque duas vezes
-                const order = await Order.findByPk(id, { transaction: t, lock: t.LOCK.UPDATE });
+                // Trava o pedido e inclui o User para sabermos quem é o cliente
+                const order = await Order.findByPk(id, { 
+                    include: [{ model: User }],
+                    transaction: t, 
+                    lock: t.LOCK.UPDATE 
+                });
 
                 if (!order) {
                     throw new BusinessError(404, 'Pedido não encontrado!');
@@ -89,9 +98,35 @@ module.exports = class OrderController {
                 }
 
                 await order.update({ status: 'Confirmado', paidAt: new Date() }, { transaction: t });
+                confirmedOrder = order; 
             });
 
-            res.status(200).json({ message: 'Pagamento confirmado e estoque atualizado!' });
+            // disparo de e-mail de confirmação para o cliente
+            if (confirmedOrder && confirmedOrder.User && confirmedOrder.User.email) {
+                try {
+                    const transporter = nodemailer.createTransport({
+                        host: process.env.EMAIL_HOST,
+                        port: process.env.EMAIL_PORT,
+                        auth: {
+                            user: process.env.EMAIL_USER,
+                            pass: process.env.EMAIL_PASS
+                        }
+                    });
+
+                    const mailOptions = {
+                        to: confirmedOrder.User.email,
+                        from: 'suporte@larose.com',
+                        subject: `Pedido Confirmado! - La Rose #${confirmedOrder.id}`,
+                        text: `Olá ${confirmedOrder.User.name},\n\nO pagamento do seu pedido foi confirmado com sucesso! 💖\n\nValor Total: R$ ${confirmedOrder.total}\n\nObrigada por escolher a La Rose!`
+                    };
+
+                    await transporter.sendMail(mailOptions);
+                } catch (emailError) {
+                    console.error('Erro ao enviar e-mail de confirmação:', emailError.message);
+                }
+            }
+
+            res.status(200).json({ message: 'Pagamento confirmado, estoque atualizado e e-mail enviado!' });
         } catch (error) {
             if (error instanceof BusinessError) {
                 return res.status(error.code).json({ message: error.message });
@@ -102,7 +137,9 @@ module.exports = class OrderController {
     }
 
     static async updateStatus(req, res) {
-        const { id } = req.params;
+        // Limpa o ID também aqui
+        const rawId = req.params.id;
+        const id = Number(rawId.replace(/\D/g, '')) || rawId;
         const { status } = req.body;
 
         if (!status) {
@@ -126,6 +163,33 @@ module.exports = class OrderController {
         } catch (error) {
             console.error('OrderController.updateStatus:', error.message);
             res.status(500).json({ message: 'Erro ao atualizar o status.' });
+        }
+    }
+    static async deleteOrder(req, res) {
+        const rawId = req.params.id;
+        const id = Number(rawId.replace(/\D/g, '')) || rawId;
+
+        try {
+            await db.transaction(async (t) => {
+                const order = await Order.findByPk(id, { transaction: t, lock: t.LOCK.UPDATE });
+                if (!order) {
+                    throw new BusinessError(404, 'Pedido não encontrado!');
+                }
+
+                // Apaga primeiro os itens associados para respeitar as chaves estrangeiras
+                await OrderItem.destroy({ where: { OrderId: order.id }, transaction: t });
+
+                // Depois apaga o pedido
+                await order.destroy({ transaction: t });
+            });
+
+            res.status(200).json({ message: 'Pedido excluído com sucesso!' });
+        } catch (error) {
+            if (error instanceof BusinessError) {
+                return res.status(error.code).json({ message: error.message });
+            }
+            console.error('OrderController.deleteOrder:', error.message);
+            res.status(500).json({ message: 'Erro ao excluir o pedido.' });
         }
     }
 };

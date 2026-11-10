@@ -17,6 +17,7 @@ router.get('/dashboard', DashboardController.overview);
 router.get('/orders', OrderController.list);
 router.patch('/orders/:id/confirm-payment', OrderController.confirmPayment);
 router.patch('/orders/:id/status', OrderController.updateStatus);
+router.delete('/orders/:id', OrderController.deleteOrder);
 
 // Estoque
 router.get('/stock', StockController.list);
